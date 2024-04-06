@@ -59,7 +59,7 @@ export default withPwa(
 
       editLink: {
         pattern: ({ filePath }) => {
-          return `https://github.com/pokebedrock/helpdesk/edit/main/${filePath}`
+          return `https://github.com/pokebedrock/helpdesk/edit/main/docs/${filePath}`
         }
       },
 
