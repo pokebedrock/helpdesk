@@ -131,3 +131,5 @@ dist
 
 public
 docs/.vitepress/cache
+# Local Netlify folder
+.netlify
