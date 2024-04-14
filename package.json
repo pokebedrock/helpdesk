@@ -4,7 +4,7 @@
     "@vite-pwa/vitepress": "^0.4.0",
     "markdown-it-video": "^0.6.3",
     "vite-plugin-pwa": "^0.19.8",
-    "vitepress": "^1.0.2"
+    "vitepress": "^1.1.0"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
