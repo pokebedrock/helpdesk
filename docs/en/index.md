@@ -3,37 +3,43 @@
 layout: home
 
 hero:
-  name: "Pokébedrock"
+  name: "PokéBedrock"
   text: "Helpdesk"
   tagline: "Select from our articles below"
   image:
     src: /assets/logo.png
-    alt: Pokébedrock Branding
+    alt: PokéBedrock Branding
   actions:
     - theme: alt
       text: Can I play split screen?
-      link: /faq/can-i-play-split-screen.md
+      link: /en/faq/can-i-play-split-screen.md
     - theme: alt
-      text: How to Join Pokébedrock?
-      link: /faq/how-to-join
+      text: How to Join PokéBedrock?
+      link: /en/faq/how-to-join
     - theme: alt
       text: How to use the auction house?
-      link: /faq/how-to-use-the-actionhouse.md
+      link: /en/faq/how-to-use-the-actionhouse.md
     - theme: alt
       text: I was scammed because I didn’t check Pokemon id can I have refund?
-      link: /faq/i-was-scammed-because-i-didnt-check-pokemon-id-can-i-have-refund.md
+      link: /en/faq/i-was-scammed-because-i-didn't-check-pokemon-id-can-i-have-refund.md
     - theme: alt
       text: Will gyms be added to the add-on?
-      link: /faq/will-gyms-be-added-to-the-addon.md
+      link: /en/faq/will-gyms-be-added-to-the-addon.md
     - theme: alt
       text: Why doesn't redstone work?
-      link: /faq/why-doesnt-redstone-work.md
+      link: /en/faq/why-doesn't-redstone-work.md
     - theme: alt
       text: How to use the GUI?
-      link: /faq/how-to-use-the-gui.md
+      link: /en/faq/how-to-use-the-gui.md
     - theme: alt
       text: How to use the warps?
-      link: /faq/how-to-use-the-warps.md
+      link: /en/faq/how-to-use-the-warps.md
+    - theme: alt
+      text: I'm stuck in battle, how do I fix this?
+      link: /en/faq/i'm-stuck-in-battle-how-do-i-fix-this.md
+    - theme: alt
+      text: Can I craft exp shares and master balls?
+      link: /en/faq/can-i-craft-exp-shares-and-master-balls.md
 
 features:
   - title: We are currently hiring! 🛠️

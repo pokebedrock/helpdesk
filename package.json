@@ -1,15 +1,19 @@
 {
   "devDependencies": {
+    "@vite-pwa/assets-generator": "^0.2.4",
     "@vite-pwa/vitepress": "^0.4.0",
+    "markdown-it-video": "^0.6.3",
     "vite-plugin-pwa": "^0.19.8",
     "vitepress": "^1.0.2"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "generate-pwa-assets": "pwa-assets-generator"
   },
   "dependencies": {
-    "markdown-it-video": "^0.6.3"
+    "@mdit/plugin-alert": "^0.8.0",
+    "vue": "^3.4.21"
   }
 }

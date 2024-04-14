@@ -1,141 +1,159 @@
 import { defineConfig } from "vitepress";
 import { withPwa } from "@vite-pwa/vitepress";
 
-import markdownItVideo from 'markdown-it-video'
+import markdownItVideo from "markdown-it-video";
+
+import langES from "./langs/es";
+import langEN from "./langs/en";
+import langPT from "./langs/pt";
 
 export default withPwa(
   defineConfig({
-    outDir: '../dist',
-    title: "Pokébedrock Helpdesk",
-    lang: 'en-US',
-    // sitemap: {
-    //   hostname: "support.pokebedrock.com",
-    //   lastmodDateOnly: false,
-    //   transformItems: (items) => {
-    //     items.push({
-    //       url: "/extra-page",
-    //       changefreq: "monthly",
-    //       priority: 0.8,
-    //     });
-    //     return items;
-    //   },
-    // },
-    description: "Pokébedrock Helpdesk",
+    outDir: "../dist",
+    title: "PokéBedrock Helpdesk",
+    description:
+      "PokeBedrock is a popular Minecraft: Bedrock Edition server with a diverse development team, offering an innovative, engaging gaming experience to a large and growing international community.",
+    lang: "en-US",
+    cleanUrls: true,
+    sitemap: {
+      hostname: "https://pokebedrock.netlify.app",
+      lastmodDateOnly: true,
+    },
     pwa: {
+      pwaAssets: {
+        preset: "minimal-2023",
+        image: "./assets/logo.svg",
+      },
+      useCredentials: true,
+      strategies: "generateSW",
+      workbox: {
+        cacheId: "pokebedrock-helpdesk",
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.hostname === "localhost",
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "app-cache",
+            },
+          },
+          {
+            urlPattern: ({ request }) => request.destination === "image",
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "images-cache",
+              expiration: {
+                maxEntries: 10,
+              },
+            },
+          },
+        ]
+      },
+      injectRegister: "auto",
       includeAssets: [
-        "favicon.ico", 
-        "apple-touch-icon.png", 
-        "mask-icon.svg"
+        "favicon.ico",
+        "apple-touch-icon-180x180.png",
+        "maskable-icon-512x512.png",
       ],
       manifest: {
-        name: "Pokébedrock Helpdesk",
+        edge_side_panel: {
+          preferred_width: 480,
+        },
+        start_url: "/en/",
+        name: "PokéBedrock Helpdesk",
         short_name: "Helpdesk",
         description: "Mine",
         theme_color: "#f93154",
         icons: [
           {
-            src: "pwa-192x192.png",
-            sizes: "192x192",
+            src: "/assets/pwa-64x64.png",
+            sizes: "64x64",
             type: "image/png",
+            purpose: "any",
           },
           {
-            src: "pwa-512x512.png",
+            src: "/assets/pwa-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "/assets/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "/assets/maskable-icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
           },
         ],
       },
     },
     markdown: {
       config: (md) => {
-        md.use(markdownItVideo)
+        md.use(markdownItVideo);
       },
       image: {
-        lazyLoading: true
-      }
-    },
-    themeConfig: {
-      externalLinkIcon: true,
-
-      editLink: {
-        pattern: ({ filePath }) => {
-          return `https://github.com/pokebedrock/helpdesk/edit/main/docs/${filePath}`
-        }
+        lazyLoading: true,
       },
-
+    },
+    locales: {
+      root: {
+        label: "English",
+        lang: "en",
+        link: "/en/",
+      },
+      pt: {
+        label: "Portuguese",
+        lang: "pt",
+        link: "/pt/",
+      },
+      es: {
+        label: "Spanish",
+        lang: "es",
+        link: "/es/",
+      },
+    },
+    appearance: "force-dark",
+    themeConfig: {
+      logo: "./assets/logo.svg",
+      externalLinkIcon: true,
+      i18nRouting: true,
+      editLink: {
+        pattern: ({ filePath }) =>
+          `https://github.com/pokebedrock/helpdesk/edit/main/docs/${filePath}`,
+      },
       footer: {
         message:
-          "Pokébedrock and its services are not endorsed by or affiliated with Minecraft, Mojang, Nintendo or Microsoft.",
+          "PokéBedrock and its services are not endorsed by or affiliated with Minecraft, Mojang, Nintendo or Microsoft.",
         copyright:
-          'Copyright © 2023-2024 <a href="https://pokebedrock.com">Pokébedrock</a>',
+          'Copyright © 2023-2024 <a href="https://pokebedrock.com">PokéBedrock</a>',
       },
-
       nav: [
         { text: "Home", link: "https://pokebedrock.com" },
         { text: "Store", link: "https://pokebedrock.com/shop" },
       ],
-
       search: {
         provider: "local",
+        options: {
+          locales: {
+            es: {
+              translations: {
+                button: {
+                  buttonText: "Buscar",
+                },
+              },
+            },
+          },
+        },
       },
-
-      sidebar: [
-        {
-          collapsed: false,
-          text: "Applications",
-          items: [
-            { text: "YouTube Rank", link: "/apply/youtube" },
-            { text: "Twitch Rank", link: "/apply/twitch" },
-            { text: "Tiktok Rank", link: "/apply/tiktok" },
-          ],
-        },
-        {
-          collapsed: false,
-          text: "Frequently Asked Questions",
-          items: [
-            {
-              text: "Can I play split screen?",
-              link: "/faq/can-i-play-split-screen.md",
-            },
-            { text: "How do I join?", link: "/faq/how-to-join" },
-            {
-              text: "How to use the auction house?",
-              link: "/faq/how-to-use-the-actionhouse.md",
-            },
-            {
-              text: "I was scammed because I didn’t check Pokemon id can I have refund?",
-              link: "/faq/i-was-scammed-because-i-didnt-check-pokemon-id-can-i-have-refund.md",
-            },
-            {
-              text: "Will gyms be added to the add-on?",
-              link: "/faq/will-gyms-be-added-to-the-addon.md",
-            },
-            {
-              text: "Why doesn't redstone work?",
-              link: "/faq/why-doesnt-redstone-work.md",
-            },
-            {
-              text: "How to use the GUI?",
-              link: "/faq/how-to-use-the-gui.md",
-            },
-            {
-              text: "How to use the warps?",
-              link: "/faq/how-to-use-the-warps.md",
-            },
-          ],
-        },
-        {
-          collapsed: false,
-          text: "Rules",
-          items: [
-            { text: "General Rules", link: "/rules/general" },
-            { text: "Build Rules", link: "/rules/build" },
-            { text: "Gameplay Rules", link: "/rules/gameplay" },
-            { text: "Chat Rules", link: "/rules/chat" },
-            { text: "Discord Rules", link: "/rules/discord" },
-          ],
-        }
-      ],
+      sidebar: {
+        "/es/": langES.sidebar,
+        "/en/": langEN.sidebar,
+        "/pt/": langPT.sidebar,
+      },
       socialLinks: [
         {
           icon: "discord",
@@ -143,9 +161,14 @@ export default withPwa(
           link: "https://discord.pokebedrock.com",
         },
         {
+          icon: "twitter",
+          ariaLabel: "twitter",
+          link: "https://twitter.com/pokebedrock",
+        },
+        {
           icon: "github",
           ariaLabel: "Github",
-          link: "https://github.com/pokebedrock/support",
+          link: "https://github.com/pokebedrock",
         },
       ],
     },

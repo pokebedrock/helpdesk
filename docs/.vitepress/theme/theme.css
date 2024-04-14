@@ -1,0 +1,8 @@
+:root {
+  --vp-c-brand-1: #ff6464;
+  --vp-c-brand-2: #ff7474;
+}
+
+*, *::after, *::before {
+  min-width: 0;
+}

@@ -1,0 +1,3 @@
+# How will gym’s function on the server?
+
+The gym’s will be based around a player and npc system, When gyms get released they will most likely be set to where we put out applications for players to become gym leaders in a respected server, a lot of people are concerned about if players aren’t online but there is a fix around that with gyms having multiple leaders in a server so not all the gym leaders have to be online, there will be no guarantee that a leader will be on a certain day but with that you can visit the gym to test your team on a ai trainer, they will not be exactly what the gym leader is using and do not give rewards, with defeating a player gym leader players will be able yo claim a rewards after defeating so many, this reward varies at each milestone.
